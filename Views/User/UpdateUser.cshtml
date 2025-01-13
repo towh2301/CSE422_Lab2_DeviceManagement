@@ -1,0 +1,43 @@
+﻿@model User;
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Edit User";
+}
+
+<h1>Edit Category: @Model.Fullname</h1>
+
+<div class="row">
+<div class="col-md-4">
+    <hr />
+    <form asp-action="UpdateUser" asp-controller="User">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <input asp-for="UserId" type="hidden" />
+            <label asp-for="Fullname" class="control-label"></label>
+            <input asp-for="Fullname" class="form-control" />
+            <span asp-validation-for="Fullname" class="text-danger"></span>
+        </div>
+        <br/>
+        <div class="form-group">
+            <label asp-for="PhoneNumber" class="control-label"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <br/>
+        <div class="form-group">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <hr/>
+        <div class="form-group">
+            <input type="submit" value="Update Category" class="btn btn-primary" /> |
+            <a asp-action="Index" asp-controller="User" class="btn btn-outline-secondary">Back to List</a>
+        </div>
+    </form>
+    <div>
+
+    </div>
+</div>
+</div>

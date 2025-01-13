@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Category>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "View Device";
+}
+
+<div class="text-center">
+    <h1>Device CRUD</h1>
+</div>
+
+<div class="dropdown">
+    <button id="dropdownButton" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+        @(!ViewBag.CurrentCategoryId.Equals("all") ? Model.FirstOrDefault(c => c.CategoryId.ToString().Equals(ViewBag.CurrentCategoryId))?.Name : "All Devices")
+    </button>
+    <ul class="dropdown-menu">
+        <li>
+            <a class="dropdown-item @(ViewBag.CurrentCategoryId.Equals("all") ? "active" : "")"
+               asp-controller="Device"
+               asp-action="Index"
+               asp-route-categoryId="all">
+                All Devices
+            </a>
+        </li>
+        @foreach (var category in Model)
+        {
+            <li>
+                <a class="dropdown-item @(ViewBag.CurrentCategoryId.Equals(category.CategoryId.ToString()) ? "active" : "")"
+                   asp-controller="Device"
+                   asp-action="Index"
+                   asp-route-categoryId="@category.CategoryId">
+                    @category.Name
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+
+<br/>
+
+@await Html.PartialAsync("DeviceCompoonents/_ViewDevicePartial", (List<Device>)ViewBag.devices)

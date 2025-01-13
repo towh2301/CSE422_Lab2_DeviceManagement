@@ -1,0 +1,39 @@
+﻿@model IEnumerable<User>
+<p>
+    <a asp-action="Create" asp-controller="User" class="btn btn-primary">Create</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Fullname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => user.Fullname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => user.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => user.Email)
+            </td>
+            <td>
+                <a asp-action="Update" asp-controller="User" asp-route-id="@user.UserId" class="btn btn-outline-secondary">Edit</a> |
+                <a asp-action="DeleteUser" asp-controller="User" asp-route-id="@user.UserId" class="btn btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Category>
+<p>
+    <a asp-action="Create" asp-controller="Category" class="btn btn-primary">Create</a>
+</p>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var category in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => category.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => category.Description)
+            </td>
+            <td>
+                <a asp-action="Update" asp-controller="Category" asp-route-id="@category.CategoryId" class="btn btn-outline-secondary">Edit</a> |
+                <a asp-action="DeleteCategory" asp-controller="Category" asp-route-id="@category.CategoryId" class="btn btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Category>
+
+@{
+    ViewData["Title"] = "Category CRUD";
+    Layout = "_Layout";
+}
+<div class="text-center">
+    <h1>Category CRUD</h1> 
+</div>
+
+
+@Html.Partial("CategoryComponents/_ViewCategoryPartial", (List<Category>)Model)

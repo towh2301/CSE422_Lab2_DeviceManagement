@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "User CRUD";
+}
+<div class="text-center">
+    <h1>User CRUD</h1>
+</div>
+
+
+@Html.Partial("UserComponents/_ViewUserPartial", (List<User>)Model)

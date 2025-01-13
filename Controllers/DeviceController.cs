@@ -6,7 +6,6 @@ namespace DeviceManager.Controllers;
 
 public class DeviceController(IDeviceService deviceService, ICategoryService categoryService) : Controller
 {
-    [HttpGet]
     public async Task<IActionResult> Index(int? categoryId)
     {
         ViewBag.currentCategoryId = "all";
@@ -17,7 +16,6 @@ public class DeviceController(IDeviceService deviceService, ICategoryService cat
     }
     
     
-    [HttpGet]
     public async Task<IActionResult> Create()
     {
         ViewBag.categories = await categoryService.GetAllCategories();
@@ -34,7 +32,6 @@ public class DeviceController(IDeviceService deviceService, ICategoryService cat
         return RedirectToAction("Index");
     }
 
-    [HttpGet]
     public async Task<IActionResult> Update(int id)
     {
         ViewBag.categories = await categoryService.GetAllCategories();
